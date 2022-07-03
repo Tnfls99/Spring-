@@ -3,16 +3,20 @@ package hello.hellospring.service;
 import hello.hellospring.Repository.MemberRepository;
 import hello.hellospring.Repository.MemoryMemberRepository;
 import hello.hellospring.domain.Member;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 // 서비스 로직 구현에는 서비스 관련 용어를 많이 사용해야 한다.
+//@Service
 public class MemberService {
     //private final MemoryMemberRepository memberRepository = new MemoryMemberRepository();
-    private final MemoryMemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
+    //@Autowired // MemberService가 MemberRepository가 필요하기 때문에
     // memberRepository를 외부에서 주입하도록 만듦 -> deqendency injection = DI
-    public MemberService(MemoryMemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
